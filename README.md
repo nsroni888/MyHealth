@@ -12,11 +12,11 @@ The app provides the following facilites
 
 UML Diagram:
 
-![alt text]()
+![alt text](https://github.com/nsroni888/MyHealth/blob/main/images/UML_image.jpg)
 
 UI Diagram:
 
-![alt text]()
+![alt text](https://github.com/nsroni888/MyHealth/blob/main/images/UI_image.jpg)
 
 
 Contribution:
