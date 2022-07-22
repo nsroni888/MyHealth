@@ -11,7 +11,7 @@ public class UserData implements Serializable {
     }
 
     @PrimaryKey
-    private long di;
+    private int di;
     private String date;
     private String timestamp;
     private int Systolic;
@@ -29,11 +29,11 @@ public class UserData implements Serializable {
     }
 
 
-    public long getDi() {
+    public int getDi() {
         return di;
     }
 
-    public void setDi(long di) {
+    public void setDi(int di) {
         this.di = di;
     }
 
