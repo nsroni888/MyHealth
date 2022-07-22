@@ -20,6 +20,9 @@ public interface IDataBase {
     void UpdateData(UserData userData);
 
 
+    @Query("SELECT * FROM USER_DATA WHERE di = :id")
+    UserData getData(String id);
+
 
     @Query("SELECT * FROM User_Data")
    List<UserData> getAllData();
