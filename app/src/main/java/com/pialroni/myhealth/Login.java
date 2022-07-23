@@ -24,7 +24,6 @@ public class Login extends AppCompatActivity {
     Button loginBtn;
     FirebaseAuth firebaseAuth;
     public ExpresssoIdlingResource mIdlingResource;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
