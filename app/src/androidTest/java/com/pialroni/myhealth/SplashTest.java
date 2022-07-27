@@ -52,4 +52,6 @@ public class SplashTest {
         onView(allOf(withId(R.id.textView), withText("Register")));
     }
 
+    // UI test finished
+
 }
