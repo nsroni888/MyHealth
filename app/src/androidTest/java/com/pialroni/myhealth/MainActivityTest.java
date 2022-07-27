@@ -74,5 +74,9 @@ public class MainActivityTest {
         onView(allOf(withId(R.id.insetDataText), withText("Insert Data")));
     }
 
+    @Test
+    public void UpdateTest() {
 
+        // To do 
+    }
 }
