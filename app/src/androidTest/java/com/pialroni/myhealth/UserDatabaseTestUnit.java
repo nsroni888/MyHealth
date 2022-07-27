@@ -98,6 +98,30 @@ public class UserDatabaseTestUnit {
         assertNull(userDataNUll);
 
     }
+    @Test
+    public void UpdateData() throws Exception{
+
+
+        UserData userData = new UserData("12/07/22", "12.00",
+                100, 12, 100, "Testing");
+        userData.setDi(System.currentTimeMillis());
+
+        dao.InsertData(userData);
+
+
+        UserData userDataRetrive = dao.getData(String.valueOf(userData.getDi())) ;
+        userDataRetrive.setDiastolic(120);
+        dao.UpdateData(userDataRetrive);
+
+        UserData userDataUpdate = dao.getData(String.valueOf(userData.getDi())) ;
+
+        assertEquals(userDataUpdate.getDiastolic(),120);
+
+
+
+
+    }
+
 
 
     @After
