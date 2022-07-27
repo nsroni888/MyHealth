@@ -82,6 +82,23 @@ public class UserDatabaseTestUnit {
 
 
 
+    @Test
+    public void DeleteData() throws Exception{
+
+
+        UserData userData = new UserData("12/07/22", "12.00",
+                100, 12, 100, "Testing");
+        userData.setDi(System.currentTimeMillis());
+
+        dao.InsertData(userData);
+        dao.DeleteData(userData);
+
+        UserData userDataNUll = dao.getData(String.valueOf(userData.getDi())) ;
+
+        assertNull(userDataNUll);
+
+    }
+
 
     @After
     public void finish() {
