@@ -64,6 +64,24 @@ public class UserDatabaseTestUnit {
     }
 
 
+    @Test
+    public void InsertData() throws Exception{
+
+
+        UserData userData = new UserData("12/07/22", "12.00",
+                100, 12, 100, "Testing");
+        userData.setDi(System.currentTimeMillis());
+
+        dao.InsertData(userData);
+        UserData allData = dao.getData(String.valueOf(userData.getDi()));
+        assertEquals(allData.getDi(),userData.getDi());
+
+
+
+    }
+
+
+
 
     @After
     public void finish() {
