@@ -77,6 +77,82 @@ public class MainActivityTest {
     @Test
     public void UpdateTest() {
 
-        // To do 
+        onView(withText("CheckHealth")).check(matches(isDisplayed())); //Check the name on the screen
+
+        onView(withId(R.id.user_data_recycler)).perform(actionOnItemAtPosition(0, click()));
+
+        // -- Details Activity -- Update data //
+        onView(allOf(withId(R.id.heart_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.clearText());
+        onView(allOf(withId(R.id.heart_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.typeText(String.valueOf(100)));
+
+        pressBack();
+        onView(allOf(withId(R.id.systolic_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.clearText());
+        onView(allOf(withId(R.id.systolic_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.typeText(String.valueOf(95)));
+        pressBack();
+        onView(allOf(withId(R.id.diastolic_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.clearText());
+        onView(allOf(withId(R.id.diastolic_rate_details))).perform(ViewActions.scrollTo()).perform(ViewActions.typeText(String.valueOf(97)));
+        pressBack();
+
+        onView(withId(R.id.edit_save))
+                .perform(ViewActions.scrollTo())
+                .perform(click());
+
+
+        onView(withText("CheckHealth")).check(matches(isDisplayed()));
+
+
+        // -- TO Detail Activity // checking -- //
+
+
+        onView(withId(R.id.user_data_recycler)).perform(actionOnItemAtPosition(0, click()));
+
+
+        onView(allOf(withId(R.id.systolic_rate_details), withText("95"))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.diastolic_rate_details), withText("97"))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.heart_rate_details), withText("100"))).check(matches(isDisplayed()));
+
     }
+
+    /**
+     * Inserting Data and saving Data to database test
+     */
+    @Test
+    public void InsertDataAndCheckInAdapter() {
+        onView(withId(R.id.floating_id)).perform(click());
+        onView(allOf(withId(R.id.insetDataText), withText("Insert Data")));
+
+
+        onView(allOf(withId(R.id.date_edit_text_id))).perform(ViewActions.typeText("12/07/22"));
+        pressBack();
+        onView(allOf(withId(R.id.time_edit_text))).perform(ViewActions.typeText("22:21"));
+
+        pressBack();
+        onView(allOf(withId(R.id.systolic_edit_text))).perform(ViewActions.scrollTo()).perform(ViewActions.typeText(String.valueOf(80)));
+        pressBack();
+        onView(allOf(withId(R.id.diastolic_edit_text))).perform(ViewActions.scrollTo()).perform(ViewActions.typeText(String.valueOf(80)));
+        pressBack();
+        ViewActions.scrollTo();
+        onView(allOf(withId(R.id.heartRate_edit_text))).perform(ViewActions.scrollTo())
+                .perform(ViewActions.typeText(String.valueOf(80)));
+        pressBack();
+
+        onView(withId(R.id.save_button))
+                .perform(scrollTo())
+                .perform(click());
+
+
+        onView(withText("CheckHealth")).check(matches(isDisplayed()));
+
+
+        onView(withId(R.id.user_data_recycler)).perform(actionOnItemAtPosition(0, click()));
+        onView(allOf(withId(R.id.date_details), withText("12/07/22"))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.systolic_rate_details), withText("80"))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.diastolic_rate_details), withText("80"))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.heart_rate_details), withText("80"))).check(matches(isDisplayed()));
+
+        pressBack();
+
+
+    }
+
 }
