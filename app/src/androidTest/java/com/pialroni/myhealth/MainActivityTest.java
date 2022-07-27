@@ -155,4 +155,28 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void DeleteTest() {
+
+        onView(withId(R.id.user_data_recycler)).perform(actionOnItemAtPosition(0, click()));
+
+        // delete button clicked //
+        onView(withId(R.id.delete_imageBtn))
+                .perform(click());
+
+        onView(withText("CheckHealth")).check(matches(isDisplayed()));
+
+    }
+
+
+    @After
+    public void unregisterIdlingResource() {
+        if (mIdlingResource != null) {
+            IdlingRegistry.getInstance().unregister(mIdlingResource);
+        }
+
+
+    }
+
+
 }
