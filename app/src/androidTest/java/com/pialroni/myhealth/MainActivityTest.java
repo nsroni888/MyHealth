@@ -25,6 +25,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Main Activity Test
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityTest {
@@ -74,6 +77,9 @@ public class MainActivityTest {
         onView(allOf(withId(R.id.insetDataText), withText("Insert Data")));
     }
 
+    /**
+     * Update UI Test
+     */
     @Test
     public void UpdateTest() {
 
@@ -155,6 +161,9 @@ public class MainActivityTest {
 
     }
 
+    /**
+     * Delete UI Test
+     */
     @Test
     public void DeleteTest() {
 
@@ -167,8 +176,9 @@ public class MainActivityTest {
         onView(withText("CheckHealth")).check(matches(isDisplayed()));
 
     }
-
-
+    /**
+     * unregister From Idling Resource
+     */
     @After
     public void unregisterIdlingResource() {
         if (mIdlingResource != null) {

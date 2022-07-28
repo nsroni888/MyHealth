@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-auth:21.0.6'
     implementation files('F:/android.jar')
+    implementation files('D:\\android.jar')
 
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

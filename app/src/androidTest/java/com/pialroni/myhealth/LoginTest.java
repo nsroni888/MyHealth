@@ -23,6 +23,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * login UI test
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class LoginTest {
@@ -49,11 +52,17 @@ public class LoginTest {
 
     }
 
+    /**
+     * login App Name Test
+     */
     @Test
     public void testAppName() {
         onView(allOf(withId(R.id.textView), withText("Login")));
     }
 
+    /**
+     * login Success Test
+     */
     @Test
     public void loginSuccessTest()  {
         onView(allOf(withId(R.id.email_login))).perform(ViewActions.typeText("p@gmail.com"));
@@ -70,6 +79,9 @@ public class LoginTest {
 
     }
 
+    /**
+     * login Failed Test
+     */
     @Test
     public void loginFailedTest() {
         onView(allOf(withId(R.id.email_login))).perform(ViewActions.typeText("p@gmail.com"));
@@ -86,6 +98,9 @@ public class LoginTest {
 
     }
 
+    /**
+     * unregister From Idling Resource
+     */
     @After
     public void unregisterIdlingResource() {
         if (mIdlingResource != null) {
