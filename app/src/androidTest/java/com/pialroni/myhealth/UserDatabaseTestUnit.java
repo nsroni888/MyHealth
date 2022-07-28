@@ -96,6 +96,7 @@ public class UserDatabaseTestUnit {
         UserData userDataNUll = dao.getData(String.valueOf(userData.getDi())) ;
 
         assertNull(userDataNUll);
+        
 
     }
     @Test

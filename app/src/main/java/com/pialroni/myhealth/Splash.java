@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Splash screen
+ */
 public class Splash extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;

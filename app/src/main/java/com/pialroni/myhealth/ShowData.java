@@ -18,6 +18,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Inserting Activity
+ */
 public class ShowData extends AppCompatActivity {
 
     final Calendar myCalendar = Calendar.getInstance();
@@ -81,10 +84,6 @@ public class ShowData extends AppCompatActivity {
 
         dataRepository = new DataRepository(getApplication());
 
-
-
-     /*   String dateString = dateEdit.getText().toString();
-        String timeString = timeEdit.getText().toString();*/
 
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +171,9 @@ public class ShowData extends AppCompatActivity {
     }
 
 
+    /**
+     * Setting date
+     */
     private void updateLabel() {
         String myFormat = "dd/MM/yy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
@@ -180,6 +182,9 @@ public class ShowData extends AppCompatActivity {
 
     }
 
+    /**
+     * Setting time
+     */
     private void showTimePicker() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);

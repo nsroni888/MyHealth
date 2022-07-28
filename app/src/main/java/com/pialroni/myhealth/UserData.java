@@ -5,8 +5,14 @@ import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
+/**
+ * Model class for database
+ *
+ */
+
 @Entity(tableName = "User_Data")
 public class UserData implements Serializable {
+
     public UserData() {
     }
 
@@ -19,6 +25,15 @@ public class UserData implements Serializable {
     private int heartRate;
     private String Comment;
 
+    /**
+     * Constructor
+     * @param date
+     * @param timestamp
+     * @param systolic
+     * @param diastolic
+     * @param heartRate
+     * @param comment
+     */
     public UserData(String date, String timestamp, int systolic, int diastolic, int heartRate, String comment) {
         this.date = date;
         this.timestamp = timestamp;
@@ -88,7 +103,5 @@ public class UserData implements Serializable {
     public String getComment() {
         return Comment;
     }
-
-    // completed
 
 }

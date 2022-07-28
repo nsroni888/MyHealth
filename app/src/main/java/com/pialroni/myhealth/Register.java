@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.espresso.IdlingResource;
@@ -17,6 +16,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Register Activity
+ */
 public class Register extends AppCompatActivity {
 
     EditText emailEdit;
@@ -63,7 +65,7 @@ public class Register extends AppCompatActivity {
                         mIdlingResource.setIdleState(false);
                         firebaseAuth.createUserWithEmailAndPassword(emailEdit.getText().toString(), passEdit.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
                                     singUpBtn.setEnabled(true);
                                     Snackbar.make(v, "Please try again", Snackbar.LENGTH_SHORT).show();
@@ -90,8 +92,12 @@ public class Register extends AppCompatActivity {
         });
     }
 
+    /**
+     * Initializing Idling Resource
+     * @return
+     */
     @VisibleForTesting
-    @NonNull
+
     public IdlingResource getIdlingResource() {
         if (mIdlingResource == null) {
             mIdlingResource = new ExpresssoIdlingResource();

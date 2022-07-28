@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.test.espresso.IdlingResource;
@@ -17,6 +16,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Login Activity
+ */
 public class Login extends AppCompatActivity {
 
     EditText emailEdit;
@@ -24,6 +26,7 @@ public class Login extends AppCompatActivity {
     Button loginBtn;
     FirebaseAuth firebaseAuth;
     public ExpresssoIdlingResource mIdlingResource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class Login extends AppCompatActivity {
                     mIdlingResource.setIdleState(false);
                     firebaseAuth.signInWithEmailAndPassword(emailEdit.getText().toString(), passEdit.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+                        public void onComplete(  Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
 
                                 Snackbar.make(v, "Please try again", Snackbar.LENGTH_SHORT).show();
@@ -84,8 +87,12 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /**
+     * Initializing Idling Resource
+     * @return
+     */
     @VisibleForTesting
-    @NonNull
+
     public IdlingResource getIdlingResource() {
         if (mIdlingResource == null) {
             mIdlingResource = new ExpresssoIdlingResource();
