@@ -1,45 +1,67 @@
 package com.pialroni.myhealth;
 
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * Data Adapter for recycler view
+ */
+
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public List<UserData> userDataList;
-    private final Context context;
+    private  Context context;
     private final ListClickListener mListClickListener;
 
+    /**
+     * Constructor
+     * @param context
+     * @param mListClickListener
+     */
     public DataAdapter(Context context, ListClickListener mListClickListener) {
         this.context = context;
         this.mListClickListener = mListClickListener;
     }
 
+    /**
+     * setting list in adapter
+     * @param list
+     */
     public void setList(List<UserData> list) {
         this.userDataList = list;
 
         notifyDataSetChanged();
     }
 
-    @NonNull
+
+    /**
+     * View Holder
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_data_item, parent, false);
-        return new ViewHolder(view);
+    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+
+        return new ViewHolder( LayoutInflater.from(parent.getContext()).inflate(R.layout.single_data_item, parent, false));
     }
 
 
-    @SuppressLint("SetTextI18n")
+    /**
+     * on BindViewHolder
+     * @param holder
+     * @param position
+     */
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder( ViewHolder holder, int position) {
         UserData userData = userDataList.get(position);
         holder.date.setText(userData.getDate());
         holder.systolic_value.setText(userData.getSystolic()+"");
@@ -73,17 +95,27 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     }
 
+    /**
+     * Item counting
+     * @return
+     */
     @Override
     public int getItemCount() {
         if (userDataList == null) return 0;
         return userDataList.size();
     }
 
+    /**
+     * interface for click in adapter
+     */
     public interface ListClickListener {
         void onListClick(UserData UserData);
     }
 
 
+    /**
+     * View holder for recycler view
+     */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView systolic_text, systolic_value;
         private TextView diastolic_text, diastolic_value;
@@ -92,7 +124,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         private TextView date;
 
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(  View itemView) {
             super(itemView);
 
             systolic_text = itemView.findViewById(R.id.Systolic_id_text);
@@ -112,6 +144,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         }
 
 
+        /**
+         * interface implement in adapter position
+         * @param v
+         */
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();

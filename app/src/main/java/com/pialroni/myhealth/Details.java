@@ -20,6 +20,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+
+/**
+ * Details activity
+ */
 public class Details extends AppCompatActivity {
 
     final Calendar myCalendar = Calendar.getInstance();
@@ -212,6 +216,9 @@ public class Details extends AppCompatActivity {
 
     }
 
+    /**
+     * setting card color Red or Green
+     */
     private void setCardColor() {
         if (userData.getSystolic() >= 90 && userData.getSystolic() <= 140) {
             // NORMAL SYSTOLIC
@@ -239,6 +246,9 @@ public class Details extends AppCompatActivity {
     }
 
 
+    /**
+     * Selecting Date
+     */
     private void updateLabel() {
         String myFormat = "dd/MM/yy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
@@ -247,6 +257,9 @@ public class Details extends AppCompatActivity {
 
     }
 
+    /**
+     * Showing time picker and selecting time
+     */
     private void showTimePicker() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);

@@ -5,10 +5,14 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
+/**
+ * Data Repository For Fetching Data
+ */
 public class DataRepository {
 
     private IDataBase dao;
     private  List<UserData>  allData;
+
 
     public DataRepository(Application application) {
         UserDatabase database = UserDatabase.getInstance(application);
@@ -16,31 +20,52 @@ public class DataRepository {
         allData = dao.getAllData();
     }
 
+    /**
+     * Inserting into database
+     * @param model
+     */
     public void insert(UserData model) {
         new InsertCourseAsyncTask(dao).execute(model);
     }
 
-    // creating a method to update data in database.
+    /**
+     * creating a method to update data in database.
+     * @param model
+     */
+
     public void update(UserData model) {
         new UpdateCourseAsyncTask(dao).execute(model);
     }
 
-    // creating a method to delete the data in our database.
+    /**
+     * creating a method to delete the data in our database.
+     * @param model
+     */
     public void delete(UserData model) {
         new DeleteCourseAsyncTask(dao).execute(model);
     }
 
-    // below is the method to delete all the courses.
+    /**
+     *  below is the method to delete all the courses.
+     * @param
+     */
+
     public void deleteAllData() {
         new DeleteAllCoursesAsyncTask(dao).execute();
     }
 
-    // below method is to read all the courses.
+    /**
+     * below method is to read all the courses.
+     * @return List<UserData>
+     */
+
     public List<UserData> getAllData() {
         return allData;
     }
 
-    // we are creating a async task method to insert new course.
+    /**
+     * Async Task for inserting data
+     */
     private static class InsertCourseAsyncTask extends AsyncTask<UserData, Void, Void> {
         private IDataBase dao;
 
@@ -56,7 +81,10 @@ public class DataRepository {
         }
     }
 
-    // we are creating a async task method to update our course.
+    /**
+     * we are creating a async task method to update our course.
+     */
+
     private static class UpdateCourseAsyncTask extends AsyncTask<UserData, Void, Void> {
         private IDataBase dao;
 
@@ -73,7 +101,10 @@ public class DataRepository {
         }
     }
 
-    // we are creating a async task method to delete course.
+    /**
+     * we are creating a async task method to delete course.
+     */
+
     private static class DeleteCourseAsyncTask extends AsyncTask<UserData, Void, Void> {
         private IDataBase dao;
 
@@ -90,7 +121,10 @@ public class DataRepository {
         }
     }
 
-    // we are creating a async task method to delete all courses.
+    /**
+     * we are creating a async task method to delete all courses.
+     */
+
     private static class DeleteAllCoursesAsyncTask extends AsyncTask<Void, Void, Void> {
         private IDataBase dao;
         private DeleteAllCoursesAsyncTask(IDataBase dao) {

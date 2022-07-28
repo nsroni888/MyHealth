@@ -4,14 +4,15 @@ package com.pialroni.myhealth;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import androidx.annotation.NonNull;
-import androidx.room.Dao;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {UserData.class}, version = 2)
+/**
+ * Creating Room Database
+ */
+@Database(entities = {UserData.class}, version = 3)
 public abstract class UserDatabase extends RoomDatabase {
 
     // below line is to create instance
@@ -20,12 +21,20 @@ public abstract class UserDatabase extends RoomDatabase {
 
     // below line is to create
     // abstract variable for dao.
+
+    /**
+     * Interface for getting data
+     * @return
+     */
     public abstract IDataBase Dao();
 
     // on below line we are getting instance for our database.
     public static synchronized UserDatabase getInstance(Context context) {
         // below line is to check if 
         // the instance is null or not.
+        /**
+         * Singleton Object
+         */
         if (instance == null) {
             // if the instance is null we
             // are creating a new instance
@@ -52,9 +61,9 @@ public abstract class UserDatabase extends RoomDatabase {
     }
 
     // below line is to create a callback for our room database.
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+    private static Callback roomCallback = new Callback() {
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+        public void onCreate(SupportSQLiteDatabase db) {
             super.onCreate(db);
             // this method is called when database is created
             // and below line is to populate our data.

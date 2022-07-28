@@ -1,13 +1,15 @@
 package com.pialroni.myhealth;
 
-import androidx.annotation.Nullable;
 import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Data delay handling with Espresso Idling Resource
+ */
 public class ExpresssoIdlingResource implements IdlingResource {
 
-    @Nullable
+
     private volatile ResourceCallback mCallback;
 
     // Idleness is controlled with this boolean.
@@ -18,10 +20,15 @@ public class ExpresssoIdlingResource implements IdlingResource {
         return this.getClass().getName();
     }
 
+    /**
+     * Data is fetching or not
+     * @return boolean
+     */
     @Override
     public boolean isIdleNow() {
         return mIsIdleNow.get();
     }
+
 
     @Override
     public void registerIdleTransitionCallback(ResourceCallback callback) {
