@@ -23,6 +23,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Register UI Test
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class RegisterTest {
@@ -48,11 +51,17 @@ public class RegisterTest {
 
     }
 
+    /**
+     * Register App Name Test
+     */
     @Test
     public void testAppName() {
         onView(allOf(withId(R.id.textView), withText("Register"))).check(matches(isDisplayed()));
     }
 
+    /**
+     * Register Success Test
+     */
     @Test
     public void RegisterSuccessTest()  {
         onView(allOf(withId(R.id.email_register))).perform(ViewActions.typeText("p@gmail.com"));
@@ -69,6 +78,10 @@ public class RegisterTest {
         onView(allOf(withId(R.id.textView), withText("CheckHealth"))).check(matches(isDisplayed()));
 
     }
+
+    /**
+     * Register Success or Failed With Same Email Test
+     */
     @Test
     public void RegisterSuccessOrFailedWithSameEmailTest()  {
         onView(allOf(withId(R.id.email_register))).perform(ViewActions.typeText("p@gmail.com"));
@@ -86,6 +99,9 @@ public class RegisterTest {
 
     }
 
+    /**
+     * Register Failed Test
+     */
     @Test
     public void RegisterFailedTest() {
 
@@ -104,7 +120,9 @@ public class RegisterTest {
 
 
     }
-
+    /**
+     * unregister From Idling Resource
+     */
     @After
     public void unregisterIdlingResource() {
         if (mIdlingResource != null) {

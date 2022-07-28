@@ -16,6 +16,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Splash Test
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class SplashTest {
@@ -25,7 +28,9 @@ public class SplashTest {
     public ActivityScenarioRule<Splash> activityRule =
             new ActivityScenarioRule<>(Splash.class);
 
-
+    /**
+     * Splash to Login Test
+     */
     @Test
     public void toLoginTest() {
         if(firebaseAuth.getCurrentUser()!=null)
@@ -38,7 +43,9 @@ public class SplashTest {
 
         onView(allOf(withId(R.id.textView), withText("Login")));
     }
-
+    /**
+     * Splash to Register Test
+     */
     @Test
     public void toRegisterTest() {
         if(firebaseAuth.getCurrentUser()!=null)
